@@ -1,30 +1,16 @@
 from flask import Flask
+from core.routes.user import bp
 
 
 app = Flask(__name__)
+app.register_blueprint(bp)
 
 
-
-@app.route("/")
-def hello_world():
-    # return "<p>Hello, World!</p>"
-    name = None
-    return 'Hello' + name
+# config banco de dados ex. SQLAlquemy
 
 
-
-@app.route("/create/user", methods=['POST'])
-def create():
-    return 'usuario criado'
+# import models
 
 
-
-@app.route("/update/user/<id>", methods=['PUT'])
-def update(id):
-    return 'usuario atualizado'
-
-
-
-@app.route("/delete/user/<id>", methods=['DELETE'])
-def delete(id):
-    return 'usuario removido'
+# import routes
+from core.routes import user
